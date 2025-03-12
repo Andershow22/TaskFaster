@@ -10,67 +10,64 @@
     <title>TaskFaster</title>
 </head>
 
-<body style="background-color: #7bc8e470;">
+<body>
     <header id="cabecalho">
         <ul class="d-flex flex-row list-unstyled">
             <li class="li-Cabecalho"><a class="links-cabecalho" th:href="@{/}">Inicial</a></li>
-            <li class="li-Cabecalho"><a class="links-cabecalho" th:href="@{/tarefas}">Tarefas</a></li>
+            <li class="li-Cabecalho"><a class="links-cabecalho" th:href="@{/tarefas}">Projetos</a></li>
             <li class="li-Cabecalho"><a class="links-cabecalho" th:href="@{/login}">Conta</a></li>
         </ul>
     </header>
     <main>
-        <section id="degrade-inicial">
-            <div class="ms-5 mt-5 mb-3">
-                <img th:src="@{/images/iconTaskFaster.png}"width="50%" class="img-fluid">
+        <section id="inicial">
+            <div class="d-flex flex-column text-center">
+                <h3>Seja bem vindo ao TaskFaster</h3>
+                <strong>Aumente o seu depempenho, organize o seu dia e otimize o seu tempo</strong>
             </div>
-            <div class="d-flex flex-column align-items-start mt-5 pe-5 pt-4">
-                <h3 style="color: white;">Seja bem vindo ao TaskFaster</h3>
-                <strong style="color: aliceblue;">Organize o seu dia a dia e otimize o seu tempo</strong>
-            </div>
+                <img th:src="@{/images/iconTaskFaster.png}" width="30%" class="img-fluid d-block mx-auto">
         </section>
-        <p class="mx-5 my-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi at ex adipisci? Similique
-            aliquid ducimus minus dolor doloremque est, quisquam illo, laudantium a nisi accusamus adipisci asperiores
-            excepturi possimus quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, assumenda.
-            Doloremque dolore similique in praesentium aliquid. Quasi veritatis, ipsum maxime corporis et tempora eius
-            ducimus, laudantium in fuga, unde hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus at
-            architecto repellat rerum facere accusantium fuga. Nostrum, magnam minima! Consequatur iure sapiente
-            assumenda. Voluptate recusandae nihil autem? Delectus, dolores sapiente? Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Sit quisquam esse recusandae reiciendis voluptatem, culpa et, itaque veritatis
-            dolorum iure nobis! Obcaecati enim reprehenderit inventore explicabo quasi eos nisi saepe!</p>
 
-        <p class="mx-5 my-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi at ex adipisci? Similique
-            aliquid ducimus minus dolor doloremque est, quisquam illo, laudantium a nisi accusamus adipisci asperiores
-            excepturi possimus quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, assumenda.
-            Doloremque dolore similique in praesentium aliquid. Quasi veritatis, ipsum maxime corporis et tempora eius
-            ducimus, laudantium in fuga, unde hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus at
-            architecto repellat rerum facere accusantium fuga. Nostrum, magnam minima! Consequatur iure sapiente
-            assumenda. Voluptate recusandae nihil autem? Delectus, dolores sapiente? Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Sit quisquam esse recusandae reiciendis voluptatem, culpa et, itaque veritatis
-            dolorum iure nobis! Obcaecati enim reprehenderit inventore explicabo quasi eos nisi saepe!</p>
+        <div class="row d-flex justify-content-center">
+            <section class="caixa">
+                <div>
+                    <h2 class="mx-5 my-5 text-center">Comece criando um <strong>Projeto!</strong></h2>
+                    <p class="paragrafo-caixa">Crie um projeto para armazenar e gerenciar as suas tarefas! 
+                        Defina a categoria que mais se encaixa para você. Convide mais pessoas para participarem
+                    </p>
+                </div>
+                <button class="btn-main">Criar Projeto</button>
+            </section>
+            <section class="caixa">
+                <div>
+                    <h2 class="mx-5 my-5 text-center">Acesse a sua <strong>Conta!</strong></h2>
+                    <p class="paragrafo-caixa">Crie ou acesse a sua conta e comece a se organizar de vez! Você só precisa 
+                        do seu nome, uma senha e o seu melhor email!
+                    </p>
+                </div>
+                <button class="btn-main">Acessar Conta</button>
+            </section>
+        </div>
 
-        <p class="mx-5 my-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi at ex adipisci? Similique
-            aliquid ducimus minus dolor doloremque est, quisquam illo, laudantium a nisi accusamus adipisci asperiores
-            excepturi possimus quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, assumenda.
-            Doloremque dolore similique in praesentium aliquid. Quasi veritatis, ipsum maxime corporis et tempora eius
-            ducimus, laudantium in fuga, unde hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus at
-            architecto repellat rerum facere accusantium fuga. Nostrum, magnam minima! Consequatur iure sapiente
-            assumenda. Voluptate recusandae nihil autem? Delectus, dolores sapiente? Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Sit quisquam esse recusandae reiciendis voluptatem, culpa et, itaque veritatis
-            dolorum iure nobis! Obcaecati enim reprehenderit inventore explicabo quasi eos nisi saepe!</p>
-            
-        <p class="mx-5 my-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi at ex adipisci? Similique
-            aliquid ducimus minus dolor doloremque est, quisquam illo, laudantium a nisi accusamus adipisci asperiores
-            excepturi possimus quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, assumenda.
-            Doloremque dolore similique in praesentium aliquid. Quasi veritatis, ipsum maxime corporis et tempora eius
-            ducimus, laudantium in fuga, unde hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus at
-            architecto repellat rerum facere accusantium fuga. Nostrum, magnam minima! Consequatur iure sapiente
-            assumenda. Voluptate recusandae nihil autem? Delectus, dolores sapiente? Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Sit quisquam esse recusandae reiciendis voluptatem, culpa et, itaque veritatis
-            dolorum iure nobis! Obcaecati enim reprehenderit inventore explicabo quasi eos nisi saepe!</p>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center flex-column">
+            <h1 class="d-flex text-center align-self-center mt-5">Com a nossa ferramenta, tudo é possível</h1>
+            <p class="mx-5 my-1">O <strong>TaskFaster</strong> é um site que propõe melhorar a sua rotina lhe ajudando a organizar as suas tarefas.</p>
+            <p class="mx-5 my-1">
+                Organização é a chave para aumentar a sua produtividade. O site possui um sistema que lhe permite criar, editar, ver e excluir tarefas.
+                É possível também definir uma prioridade, caso alguma tarefa tenha mais relevância que os outras. Contamos também com datas de finalização
+                para que você não se perca com prazos e descrições para você saber oque deve ser feito.
+            </p>
+            <p class="mx-5 my-1">
+                Para você não se perder com o seu progresso, é possível visualizar e alterar o estágio de qualquer tarefa, sendo elas:
+                <ul class="ms-5">
+                    <li>A fazer</li>
+                    <li>Em Andamento</li>
+                    <li>Concluído</li>
+                </ul>
+            </p>
+            <p class="mx-5 my-1">Faça bom proveito do TaskFaster e já realize hoje o que você pode deixar para amanhã</p>
         </div>
     </main>
-    <footer style="margin-top: 10em; text-align: center;">
+    <footer style="margin-top: 8em; text-align: center;">
         <p><strong>Desenvolvido por Anderson Simões Bittencourt</strong></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
