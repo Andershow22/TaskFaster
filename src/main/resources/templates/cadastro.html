@@ -14,29 +14,29 @@
             <strong>Cria uma conta TaskFaster e tenha controle sobre a sua rotina!</strong>
         </header>
         <section class="d-flex flex-direction-row justify-content-between">
-            <div style="width: 60%; margin-right: 1em; max-height: 30em;">
+            <form style="width: 60%; margin-right: 1em; max-height: 30em;" method="post" th:action="@{/user/salvar}" th:object="${user}">
                 <div class="campos_cadastro">
                     <label for="nome" class="label_validacao">Nome precisa ser preenchido</label>
-                    <input class="form-control input-cadastro" type="text" name="nome" placeholder="Primeiro Nome:">
+                    <input class="form-control input-cadastro" type="text" name="nome" placeholder="Primeiro Nome:" th:field="*{nome}">
                 </div>
                 <div class="campos_cadastro">
                     <label for="sobrenome" class="label_validacao">O sobrenome precisa ser preenchido</label>
-                    <input class="form-control input-cadastro" type="text" name="sobrenome" placeholder="Sobrenome:">
+                    <input class="form-control input-cadastro" type="text" name="sobrenome" placeholder="Sobrenome:" th:field="*{sobrenome}">
                 </div>
                 <div class="campos_cadastro">
                     <label for="email" class="label_validacao">Email precisa ser preenchido</label>
-                <input class="form-control input-cadastro" type="email" name="email" placeholder="Seu melhor email:">
+                <input class="form-control input-cadastro" type="email" name="email" placeholder="Seu melhor email:" th:field="*{email}">
                 </div>
                 <div class="campos_cadastro">
                     <label for="senha" class="label_validacao">Você precisa escolher uma senha</label>
-                    <input class="form-control input-cadastro" type="password" name="senha" placeholder="Senha:">
+                    <input class="form-control input-cadastro" type="password" name="senha" placeholder="Senha:" th:field="*{senha}">
                 </div>
                 <div class="campos_cadastro">
                     <label for="senha-denovo" class="label_validacao">Confirme a sua senha por favor</label>
                     <input class="form-control input-cadastro" type="password" name="senha-denovo" placeholder="Confirme a sua senha:">
                 </div>
-                <button class="btn w-50" id="btn-cadastro" onclick="validacaoCadastro()">Cadastrar</button>
-            </div>
+                <button class="btn w-50" id="btn-cadastro" onclick="validacaoCadastro()" type="submit">Cadastrar</button>
+            </form>
             <div style="width: 25;">
                 <img th:src="@{/images/cadastro.png}" alt="" height="100%" width="100%">
             </div>

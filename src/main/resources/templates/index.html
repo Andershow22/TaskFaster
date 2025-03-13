@@ -27,7 +27,7 @@
                 <img th:src="@{/images/iconTaskFaster.png}" width="30%" class="img-fluid d-block mx-auto">
         </section>
 
-        <div class="row d-flex justify-content-center">
+        <div class="d-flex justify-content-center flex-row">
             <section class="caixa">
                 <div>
                     <h2 class="mx-5 my-5 text-center">Comece criando um <strong>Projeto!</strong></h2>
@@ -35,7 +35,7 @@
                         Defina a categoria que mais se encaixa para você. Convide mais pessoas para participarem
                     </p>
                 </div>
-                <button class="btn-main">Criar Projeto</button>
+                <a th:href="@{/projetos}" class="btn-main"> Criar Projeto</a>
             </section>
             <section class="caixa">
                 <div>
@@ -44,7 +44,7 @@
                         do seu nome, uma senha e o seu melhor email!
                     </p>
                 </div>
-                <button class="btn-main">Acessar Conta</button>
+                <a th:href="@{/login}" class="btn-main"> Acessar a Conta</a>
             </section>
         </div>
 

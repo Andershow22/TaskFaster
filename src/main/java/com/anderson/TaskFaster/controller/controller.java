@@ -23,6 +23,11 @@ public class controller {
         return "cadastro";
     }
 
+    @GetMapping("/projetos")
+    public String getProjetos() {
+        return "projetos";
+    }
+
     @GetMapping("/tarefas")
     public String getTarefas() {
         return "tarefas";
