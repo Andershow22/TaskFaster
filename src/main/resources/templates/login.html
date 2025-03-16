@@ -15,15 +15,15 @@
             <h2>Login</h2>
             <strong>Acesse sua conta TaskFaster</strong>
         </header>
-        <div id="inputs">
+        <form id="inputs" th:action="@{/user/login}" method="post" onsubmit="return validacaoLogin()">
             <label for="email" class="label_validacao">Campo email precisa ser preenchido</label>
-            <input class="form-control" type="email" name="email" placeholder="Digite o seu email:">
+            <input class="form-control" type="email" name="email" placeholder="Digite o seu email:" th:value="${email}">
 
             <label for="senha" class="label_validacao">Campo senha precisa ser preenchido</label>
-            <input class="form-control" type="password" name="senha" placeholder="Digite a sua senha:">
-
-            <button class="btn" id="btn-login" onclick="validacaoLogin()">Entrar</button>
-        </div>
+            <input class="form-control" type="password" name="senha" placeholder="Digite a sua senha:" th:value="${senha}">
+            
+            <button class="btn" id="btn-login">Entrar</button>
+        </form>
         <p>Novo por aqui? <a th:href="@{/user/cadastro}">Crie a sua conta</a></p>
     </section>
     <script th:src="@{/js/validation.js}"></script>

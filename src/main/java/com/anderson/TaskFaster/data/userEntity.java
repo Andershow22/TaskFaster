@@ -13,10 +13,10 @@ public class userEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    private Integer id;
     
     //@JsonIgnore usar só depois q terminar testes
-    String nome, sobrenome, email, senha;
+    private String nome, sobrenome, email, senha;
 
 
 }

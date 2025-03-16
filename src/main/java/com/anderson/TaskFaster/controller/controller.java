@@ -1,6 +1,7 @@
 package com.anderson.TaskFaster.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -14,7 +15,9 @@ public class controller {
     }
 
     @GetMapping("/login")
-    public String getLogin() {
+    public String getLogin(Model m) {
+        m.addAttribute("email", new String());
+        m.addAttribute("senha", new String());
         return "login";
     }
 
