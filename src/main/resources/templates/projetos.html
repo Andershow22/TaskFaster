@@ -21,6 +21,7 @@
 
     <main>
         <h1>Crie um Projeto</h1>
+        <span th:text="${projeto.titulo}"></span>
         <span th:text="${user.nome}"></span>
         <form action="" method="post" th:action="@{/projeto/criar}" th:object="${projeto}" >
             <div class="campos_cadastro">

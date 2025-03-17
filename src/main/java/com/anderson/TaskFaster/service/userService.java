@@ -13,7 +13,6 @@ public class userService {
     userRepository repo;
 
     public userEntity salvarUser(userEntity user){
-        user.setId(null); //tem q ser nulo para o JPA entender q é um novo registro 
         repo.save(user);
 
         return user;

@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +23,7 @@ public class projetoEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "id_user_criador")
     @JsonIgnore
     private userEntity user_criador;

@@ -12,7 +12,7 @@ import lombok.Data;
 public class userEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
     //@JsonIgnore usar só depois q terminar testes

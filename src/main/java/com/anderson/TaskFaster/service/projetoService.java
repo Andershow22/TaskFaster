@@ -1,5 +1,8 @@
 package com.anderson.TaskFaster.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.anderson.TaskFaster.data.projetoEntity;
@@ -7,6 +10,7 @@ import com.anderson.TaskFaster.data.projetoRepository;
 
 @Service
 public class projetoService{
+
 
     @Autowired
     projetoRepository repo;
@@ -26,6 +30,12 @@ public class projetoService{
 
     public projetoEntity getProjeto(Integer id){
         return repo.findById(id).orElse(null);
+    }
+
+    public List<projetoEntity> getProjetosIdUser(){
+        List<projetoEntity> lista = new ArrayList<>();
+        return lista;
+        
     }
 
     public void deletar(Integer id){
