@@ -261,6 +261,40 @@ body{
     align-self: center;
 }
 
+.tarefas-group{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.accordion{
+    background-color: #052247;
+    margin-inline: 0.4em;
+    border-radius: 0.3em;
+    padding: 0.2em;
+    margin-block: 0;
+}
+
+.accordion-header{
+    background-color: #052247;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+
+}
+
+.accordion-body{
+    opacity: 0;
+    height: 0;
+}
+
+.accordion-body.active{
+    height: 100%;
+    opacity: 1;
+}
+
 /*//////////////////////////////////////////////////////////////////*/
                     /*Modal para criar Tarefa*/
 /*//////////////////////////////////////////////////////////////////*/
@@ -286,4 +320,52 @@ body{
     flex-direction: column;
     margin: 1em;
     width: 80%;
+}
+#form-tarefa{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/*//////////////////////////////////////////////////////////////////*/
+                    /*Tela Geral*/
+/*//////////////////////////////////////////////////////////////////*/
+
+#main-geral{
+    display: flex;
+    flex-direction: row;
+}
+
+.caixa-geral{
+    min-height: 15em;
+    background-color: #052247;
+    color: white;
+    width: 30%;
+    border: #010914 solid 0.4em;
+    border-radius: 1em;
+    margin-inline: 0.2em;
+    padding: 1em;
+    text-align: start;
+}
+
+.btn-geral{
+    text-align: center;
+    border-radius: 0.3em;
+    width: 30%;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.btn-projeto{
+    background-color: #87DDFD;
+    border: #87DDFD solid;
+    border-radius: 0.7em;
+    text-decoration: none;
+    color: black;
+    padding-inline: 1em;
+    padding-block: 0.5em;
+    height: 100%;
+    width: 100%;
 }

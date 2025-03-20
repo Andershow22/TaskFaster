@@ -26,7 +26,7 @@ public class projetoEntity {
     @ManyToOne()
     @JoinColumn(name = "id_user_criador")
     @JsonIgnore
-    private userEntity user_criador;
+    private userEntity userCriador;
 
     private String titulo, descricao, categoria;
 

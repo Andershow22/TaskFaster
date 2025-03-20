@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.anderson.TaskFaster.data.projetoEntity;
+import com.anderson.TaskFaster.data.tarefaEntity;
 import com.anderson.TaskFaster.data.userEntity;
 import com.anderson.TaskFaster.service.projetoService;
+import com.anderson.TaskFaster.service.tarefaService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -22,6 +25,9 @@ public class projetoController {
     @Autowired
     projetoService service;
 
+    @Autowired
+    tarefaService serviceTarefa;
+
     @GetMapping("/criar")
     public String getPaginaProjeto(Model m, Integer id) {
         m.addAttribute("projeto", new projetoEntity());
@@ -34,8 +40,28 @@ public class projetoController {
         if (user == null) {
             return "redirect:/login";
         }
-        projeto.setUser_criador(user);
+        projeto.setUserCriador(user);
         service.salvar(projeto);
         return "redirect:/";
     }
+
+    @PostMapping("/acessar")
+    public String gettarefas(Model m, @RequestParam Integer id, HttpSession session) {
+        projetoEntity projeto = service.getProjeto(id);
+        session.setAttribute("projeto-ativo", projeto);
+        m.addAttribute("projeto", projeto);
+        m.addAttribute("tarefas", serviceTarefa.getTarefasPorProjeto(id));
+        m.addAttribute("tarefa", new tarefaEntity());
+        return "tarefas";
+    }
+
+    @GetMapping("/acessar")
+    public String getMethodName(HttpSession session, Model m) {
+        projetoEntity projeto = (projetoEntity) session.getAttribute("projeto-ativo");
+        m.addAttribute("projeto", projeto);
+        m.addAttribute("tarefas", serviceTarefa.getTarefasPorProjeto(projeto.getId()));
+        m.addAttribute("tarefa", new tarefaEntity());
+        return "tarefas";
+    }
+    
 }

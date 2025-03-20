@@ -2,7 +2,6 @@
 //validações
 ////////////////////////////////////////////////
 function validacaoCadastro() {
-    console.log("enhbjcfei")
     //passa por todos os inputs e vê se algum está vazio
     let inputs = Array.from(document.getElementsByClassName("input-cadastro"));
     inputs.forEach(input => {
@@ -50,6 +49,33 @@ function validacaoCriarTarefa() {
             label.style.transition = "opacity 0.2s ease-in-out"
         }
     })
+
+    /*
+    if (resultado) {
+        let url = "/tarefa/criar";
+        fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }, // Define o tipo de conteúdo
+            body: JSON.stringify({
+                titulo: inputs[0].value,
+                descricao: inputs[1].value,
+                prioridade: inputs[2].value,
+                data_finalizacao: inputs[3].value,
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error("Erro ao criar tarefa");
+        })
+        .then(message => {
+            console.log(message);
+            window.location.reload();
+        })
+        .catch(error => console.error("Erro:", error));
+    }
+        */
 }
 
 //AJAX

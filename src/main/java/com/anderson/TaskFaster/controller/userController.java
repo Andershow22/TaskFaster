@@ -46,8 +46,8 @@ public class userController {
         if (user != null) {
             sessao.setAttribute("user-logado", user);
             m.addAttribute("user", user);
-            m.addAttribute("projetos", serviceProjeto);
-            return "projetos";
+            m.addAttribute("projetos", serviceProjeto.getProjetosIdUser(user.getId()));
+            return "geral";
         }
         return "redirect:/login";
     }

@@ -1,9 +1,14 @@
 package com.anderson.TaskFaster.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.anderson.TaskFaster.data.tarefaEntity;
 import com.anderson.TaskFaster.data.tarefaRepository;
 
+@Service
 public class tarefaService {
     @Autowired
     tarefaRepository repo;
@@ -24,6 +29,10 @@ public class tarefaService {
         tarefaNovo.setPrioridade(tarefa.getPrioridade());
         tarefaNovo.setStatus_tarefa(tarefa.getStatus_tarefa());
 
+    }
+
+    public List<tarefaEntity> getTarefasPorProjeto(Integer id){
+        return repo.findByProjeto_id(id);
     }
 
     public void deletar(Integer id){

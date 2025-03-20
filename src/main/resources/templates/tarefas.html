@@ -37,17 +37,34 @@
 
     </section>
     <main class="d-flex flex-column" style="flex: 5; background-color: #7bc8e470;">
-        <h4 style="margin-block: 1.5em; margin-left: 2em;">*Nome do projeto</h4>
+        <h4 style="margin-block: 1.5em; margin-left: 2em;" th:text="${projeto.titulo}"></h4>
         <section id="principal_tarefas">
             <div id="a_fazer" class="tarefas">
                 <h4 class="status_titulo">A Fazer</h4>
                 <div class="tarefas-group"></div>
-                <button class="btn" id="btn-criar-tarefa" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="abrirModal()"> + Criar
-                    tarefa</button>
+                <button class="btn" id="btn-criar-tarefa" onclick="abrirModal()"> + Criar tarefa</button>
             </div>
             <div id="em_andamento" class="tarefas">
                 <h4 class="status_titulo">Em Andamento</h4>
-                <div class="tarefas-group"></div>
+                <div class="tarefas-group">
+                    <form class="accordion" th:each="tarefa : ${tarefas}" th:action="@{/tarefa/criar}">
+                        <button class="accordion-header">
+                            <h4 th:text="${tarefa.titulo}"></h4>
+                            <span th:text="${tarefa.prioridade}"></span>
+                            <span th:text="${tarefa.status_tarefa}"></span>
+                            <select name="status_tarefa" id="">
+                                <option value="a fazer">A fazer</option>
+                                <option value="andamento">Em andamento</option>
+                                <option value="concluido">Concluído</option>
+                            </select>
+                        </button>
+                        <div class="accordion-body">
+                            <p th:text="${tarefa.descricao}"></p>
+                            <p th:text="${tarefa.data_finalizacao}"></p>
+                        </div>
+                        <button type="submit">Alterar</button>
+                    </form>
+                </div>
             </div>
             <div id="concluido" class="tarefas">
                 <h4 class="status_titulo">Concluído</h4>
@@ -57,30 +74,32 @@
     </main>
     <dialog id="modal-criar-tarefa">
         <h2>Criar uma nova tarefa</h2>
-        <form style="width: 100%; display: flex; align-items: center;flex-direction: column;" action="">
+        <form id="form-tarefa" method="post" th:action="@{/tarefa/criar}" th:object="${tarefa}">
             <div class="inputs-form-criar-tarefa">
                 <label for="titulo" class="label_validacao">Título é obrigatório</label>
-                <input type="text" name="titulo" class="form-control" placeholder="Título:">
+                <input type="text" name="titulo" class="form-control" placeholder="Título:" th:field="*{titulo}">
             </div>
             <div class="inputs-form-criar-tarefa" style="display: flex;align-items: flex-start;">
-                <textarea name="descricao" class="form-control" placeholder="Descreva oque deve ser feito" style="height: 8em;"></textarea>
+                <textarea name="descricao" class="form-control" placeholder="Descreva oque deve ser feito" style="height: 8em;" th:field="*{descricao}">
+                </textarea>
             </div>
             <div class="inputs-form-criar-tarefa">
                 <label for="prioridade"></label>
-                <select name="prioridade" id="" class="form-control" placeholder="Título:">
+                <select name="prioridade" class="form-control" th:field="*{prioridade}">
                     <option value="" disabled selected>Selecione uma prioridade</option>
-                    <option value="1">🔵 Baixa</option>
-                    <option value="2">🟡 Média</option>
-                    <option value="3">🟠 Alta</option>
-                    <option value="4">🔴 Muito Alta</option>
+                    <option value="baixa">🔵 Baixa</option>
+                    <option value="media">🟡 Média</option>
+                    <option value="alta">🟠 Alta</option>
+                    <option value="muito_alta">🔴 Muito Alta</option>
                 </select>
             </div>
             <div class="inputs-form-criar-tarefa">
-                <input type="date" name="data-finalizacao" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" class="form-control" placeholder="Data de finalização">
+                <input type="date" name="data-finalizacao" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" 
+                class="form-control" placeholder="Data de finalização" th:field="*{data_finalizacao}">
             </div>
+            <button class="btn btn-dark" onclick="fechaModal()">Fechar</button>
+            <button class="btn btn-dark" onclick="validacaoCriarTarefa()" type="submit">Criar</button>
         </form>
-        <button class="btn btn-dark" onclick="fechaModal()">Fechar</button>
-        <button class="btn btn-dark" onclick="validacaoCriarTarefa()">Criar</button>
     </dialog>
 
     <script>
@@ -95,6 +114,7 @@
         }
     </script>
     <script th:src="@{/js/validation.js}"></script>
+    <script th:src="@{/js/accordion.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
         </script>

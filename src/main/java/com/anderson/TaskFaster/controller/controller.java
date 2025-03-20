@@ -21,11 +21,6 @@ public class controller {
         return "login";
     }
 
-    @GetMapping("/teste")
-    public String getTeste(Model m) {
-        return "geral";
-    }
-
     @GetMapping("/cadastro")
     public String getCadastro() {
         return "cadastro";
@@ -34,11 +29,6 @@ public class controller {
     @GetMapping("/projetos")
     public String getProjetos() {
         return "projetos";
-    }
-
-    @GetMapping("/tarefas")
-    public String getTarefas() {
-        return "tarefas";
     }
     
     

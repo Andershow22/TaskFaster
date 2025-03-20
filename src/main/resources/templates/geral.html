@@ -18,28 +18,16 @@
             <li class="li-Cabecalho"><a class="links-cabecalho" th:href="@{/login}">Conta</a></li>
         </ul>
     </header>
-
-    <main>
-        <h1>Crie um Projeto</h1>
-        <form action="" method="post" th:action="@{/projeto/criar}" th:object="${projeto}">
-            <div class="campos_cadastro">
-                <label for="titulo" class="label_validacao">Título não pode ficar vazio</label>
-                <input class="form-control input-cadastro" type="text" name="titulo" placeholder="Titulo:" th:field="*{titulo}">
+    <h2>Bem vindo de volta, <span th:text="${user.nome}"></span></h2>
+    <main id="main-geral">
+        <form class="caixa-geral" th:each="projeto : ${projetos}" th:action="@{/projeto/acessar}" method="post">
+            <h3 th:text="${projeto.titulo}"></h3>
+            <h5 th:text="${projeto.categoria}"></h5>
+            <input type="hidden" name="id" th:value="${projeto.id}" />
+            <p class="mb-5" th:text="${projeto.descricao}"></p>
+            <div class="btn-geral">
+                <button type="submit" class="btn-projeto">Acessar</button>
             </div>
-            <div class="campos_cadastro">
-                <label for="descricao" class="label_validacao">Nome precisa ser preenchido</label>
-                <input class="form-control input-cadastro" type="text" name="descricao" placeholder="Descrição do projeto:" th:field="*{descricao}">
-            </div>
-            <div class="campos_cadastro">
-                <label for="categoria">Você precisa escolher alguma categoria</label>
-                <select name="categoria" id="" class="form-control">
-                    <option value="" disabled selected>Selecione uma categoria</option>
-                    <option value="Pessoal">🧍 Pessoal</option>
-                    <option value="Estudo">📕 Estudo</option>
-                    <option value="Trabalho">👔 Trabalho</option>
-                </select>
-            </div>
-            <button type="submit">Criar Projeto!</button>
         </form>
     </main>
 

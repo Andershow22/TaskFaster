@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface projetoRepository extends JpaRepository<projetoEntity, Integer> {
-    List<projetoEntity> findByfilme_id(Integer user_id);
+    List<projetoEntity> findByUserCriador_id(Integer user_id);
 }

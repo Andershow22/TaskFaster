@@ -1,6 +1,5 @@
 package com.anderson.TaskFaster.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +31,8 @@ public class projetoService{
         return repo.findById(id).orElse(null);
     }
 
-    public List<projetoEntity> getProjetosIdUser(){
-        List<projetoEntity> lista = new ArrayList<>();
+    public List<projetoEntity> getProjetosIdUser(Integer id){
+        List<projetoEntity> lista = repo.findByUserCriador_id(id);
         return lista;
         
     }
