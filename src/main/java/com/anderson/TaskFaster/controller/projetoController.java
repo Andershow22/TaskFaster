@@ -50,7 +50,11 @@ public class projetoController {
         projetoEntity projeto = service.getProjeto(id);
         session.setAttribute("projeto-ativo", projeto);
         m.addAttribute("projeto", projeto);
-        m.addAttribute("tarefas", serviceTarefa.getTarefasPorProjeto(id));
+
+        m.addAttribute("tarefasAFazer", serviceTarefa.getTarefasAFazer(id));
+        m.addAttribute("tarefasAndamento", serviceTarefa.getTarefasAndamento(id));
+        m.addAttribute("tarefasConcluidas", serviceTarefa.getTarefasConcluidas(id));
+        
         m.addAttribute("tarefa", new tarefaEntity());
         return "tarefas";
     }
@@ -59,7 +63,11 @@ public class projetoController {
     public String getMethodName(HttpSession session, Model m) {
         projetoEntity projeto = (projetoEntity) session.getAttribute("projeto-ativo");
         m.addAttribute("projeto", projeto);
-        m.addAttribute("tarefas", serviceTarefa.getTarefasPorProjeto(projeto.getId()));
+
+        m.addAttribute("tarefasAFazer", serviceTarefa.getTarefasAFazer(projeto.getId()));
+        m.addAttribute("tarefasAndamento", serviceTarefa.getTarefasAndamento(projeto.getId()));
+        m.addAttribute("tarefasConcluidas", serviceTarefa.getTarefasConcluidas(projeto.getId()));
+
         m.addAttribute("tarefa", new tarefaEntity());
         return "tarefas";
     }

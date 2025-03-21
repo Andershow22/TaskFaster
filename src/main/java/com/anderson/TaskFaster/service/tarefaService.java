@@ -28,13 +28,25 @@ public class tarefaService {
         tarefaNovo.setData_finalizacao(tarefa.getData_finalizacao());
         tarefaNovo.setPrioridade(tarefa.getPrioridade());
         tarefaNovo.setStatus_tarefa(tarefa.getStatus_tarefa());
-
+        repo.save(tarefa);
     }
 
     public List<tarefaEntity> getTarefasPorProjeto(Integer id){
         return repo.findByProjeto_id(id);
     }
 
+    public List<tarefaEntity> getTarefasAFazer(Integer id){
+        return repo.buscarTarefas("a fazer", id);
+    }
+
+    public List<tarefaEntity> getTarefasAndamento(Integer id){
+        return repo.buscarTarefas("andamento", id);
+    }
+
+    public List<tarefaEntity> getTarefasConcluidas(Integer id){
+        return repo.buscarTarefas("concluido", id);
+    }
+    
     public void deletar(Integer id){
         repo.delete(getTarefa(id));
     }
