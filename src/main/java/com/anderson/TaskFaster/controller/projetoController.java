@@ -29,20 +29,40 @@ public class projetoController {
     tarefaService serviceTarefa;
 
     @GetMapping("/criar")
-    public String getPaginaProjeto(Model m, Integer id) {
+    public String getPaginaProjeto(Model m) {
+
         m.addAttribute("projeto", new projetoEntity());
         return "projetos";
     }
 
     @PostMapping("/criar")
-    public String salvarProjeto(@ModelAttribute projetoEntity projeto, HttpSession session) {
+    public String salvarProjeto(@ModelAttribute projetoEntity projeto, HttpSession session, Model m) {
         userEntity user = (userEntity) session.getAttribute("user-logado");
-        if (user == null) {
-            return "redirect:/login";
+        if (projeto.getId() == null) {
+            projeto.setUserCriador(user);
+            service.salvar(projeto);
+        } else {
+            projetoEntity projetoNovo = (projetoEntity) session.getAttribute("projeto-ativo");
+            projeto.setUserCriador(user);
+            service.atualizar(projeto, projetoNovo.getId());
         }
-        projeto.setUserCriador(user);
-        service.salvar(projeto);
-        return "redirect:/";
+        session.setAttribute("user-logado", user);
+        m.addAttribute("user", user);
+        m.addAttribute("projetos", service.getProjetosIdUser(user.getId()));
+        return "geral";
+    }
+
+    @GetMapping("/acessar")
+    public String acessarProjeto(HttpSession session, Model m) {
+        projetoEntity projeto = (projetoEntity) session.getAttribute("projeto-ativo");
+        m.addAttribute("projeto", projeto);
+
+        m.addAttribute("tarefasAFazer", serviceTarefa.getTarefasAFazer(projeto.getId()));
+        m.addAttribute("tarefasAndamento", serviceTarefa.getTarefasAndamento(projeto.getId()));
+        m.addAttribute("tarefasConcluidas", serviceTarefa.getTarefasConcluidas(projeto.getId()));
+
+        m.addAttribute("tarefa", new tarefaEntity());
+        return "tarefas";
     }
 
     @PostMapping("/acessar")
@@ -54,22 +74,37 @@ public class projetoController {
         m.addAttribute("tarefasAFazer", serviceTarefa.getTarefasAFazer(id));
         m.addAttribute("tarefasAndamento", serviceTarefa.getTarefasAndamento(id));
         m.addAttribute("tarefasConcluidas", serviceTarefa.getTarefasConcluidas(id));
-        
+
         m.addAttribute("tarefa", new tarefaEntity());
         return "tarefas";
     }
 
-    @GetMapping("/acessar")
-    public String getMethodName(HttpSession session, Model m) {
+    @GetMapping("/editar")
+    public String editarProjeto(HttpSession session, Model m) {
         projetoEntity projeto = (projetoEntity) session.getAttribute("projeto-ativo");
         m.addAttribute("projeto", projeto);
+        return "editarProjeto";
+    }
 
-        m.addAttribute("tarefasAFazer", serviceTarefa.getTarefasAFazer(projeto.getId()));
-        m.addAttribute("tarefasAndamento", serviceTarefa.getTarefasAndamento(projeto.getId()));
-        m.addAttribute("tarefasConcluidas", serviceTarefa.getTarefasConcluidas(projeto.getId()));
+    @PostMapping("/editar")
+    public String editarProjeto(@ModelAttribute projetoEntity projeto, HttpSession session, Model m) {
+        projetoEntity projetoAtual = (projetoEntity) session.getAttribute("projeto-ativo");
+        if (projetoAtual != null && projeto.getId().equals(projetoAtual.getId())) {
+            service.atualizar(projeto, projeto.getId());
+        }
+        userEntity user = (userEntity) session.getAttribute("user-logado");
+        m.addAttribute("user", user);
+        m.addAttribute("projetos", service.getProjetosIdUser(user.getId()));
+        return "geral";
+    }
 
-        m.addAttribute("tarefa", new tarefaEntity());
-        return "tarefas";
+    @GetMapping("/excluir")
+    public String getMethodName(HttpSession session) {
+        projetoEntity projeto = (projetoEntity) session.getAttribute("projeto-ativo");
+        service.deletar(projeto.getId());
+        return "redirect:/";
     }
     
+
+
 }
