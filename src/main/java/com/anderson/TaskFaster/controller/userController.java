@@ -27,11 +27,15 @@ public class userController {
     projetoService serviceProjeto;
 
     @PostMapping("/salvar")
-    public String salvarUser(@ModelAttribute userEntity user) {
-        if (user.getId() == null) {
+    public String salvarUser(@ModelAttribute userEntity user, HttpSession session) {
+        userEntity userLogado = (userEntity) session.getAttribute("user-logado");
+
+        if (userLogado != null) {
+            service.editarUser(user, userLogado.getId());
+        } else {
             service.salvarUser(user);
         }
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/cadastro")
@@ -50,6 +54,20 @@ public class userController {
             return "geral";
         }
         return "redirect:/login";
+    }
+
+    @GetMapping("/editar")
+    public String getMethodName(Model m, HttpSession session) {
+        userEntity user = (userEntity) session.getAttribute("user-logado");
+        m.addAttribute("user", user);
+        return "editarUser";
+    }
+
+    @PostMapping("/editar")
+    public String editarUser(Model m, HttpSession session) {
+        userEntity user = (userEntity) session.getAttribute("user-logado");
+        service.editarUser(user, user.getId());
+        return "redirect:/projeto/acessar";
     }
 
 }

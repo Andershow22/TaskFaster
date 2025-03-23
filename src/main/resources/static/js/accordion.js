@@ -1,7 +1,10 @@
-const accordions = document.querySelectorAll('.accordion')
+const accordions = document.querySelectorAll('.accordion');
+
 accordions.forEach(ac => {
-    ac.addEventListener('click', () =>{
-        const body = ac.querySelector('.accordion-body')
-        body.classList.toggle('active');
-    })
-})
+    const header = ac.querySelector('.accordion-header'); // Ouvinte apenas no header
+    if (header) {
+        header.addEventListener('click', () => {
+            ac.classList.toggle('active'); // Aplica a classe "active" no accordion inteiro
+        });
+    }
+});

@@ -1,15 +1,18 @@
 
 //validações
 ////////////////////////////////////////////////
-function validacaoCadastro() {
+function validacaoCadastro(event) {
     //passa por todos os inputs e vê se algum está vazio
     let inputs = Array.from(document.getElementsByClassName("input-cadastro"));
+    let valido = true;
+
     inputs.forEach(input => {
         if (input.value == "") {
             let label = document.querySelector(`label[for="${input.name}"]`)
             label.style.visibility = "visible"
             label.style.opacity = "1"
             label.style.transition = "opacity 0.2s ease-in-out"
+            valido = false;
         }
     }); //acaba o  for each
 
@@ -20,7 +23,10 @@ function validacaoCadastro() {
         label.style.opacity = "1"
         label.style.transition = "opacity 0.2s ease-in-out"
         label.innerHTML = "As senhas não são compatíveis"
-
+        valido = false;
+    }
+    if (!valido) {
+        event.preventDefault();
     }
 }
 function validacaoLogin() {
