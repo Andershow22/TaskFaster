@@ -2,8 +2,19 @@
 
 
 body{
-    height: 100vh;
+    height: 100%;
     color: #021227;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    text-align: center;
+    margin-top: 8em;
+}
+
+main{
+    flex: 1;
 }
 /*//////////////////////////////////////////////////////////////////*/
                             /*Header da página*/
@@ -51,6 +62,18 @@ body{
     text-align: center;
 }
 
+.caixa-geral-criar{
+    height: 18em;
+    width: 100%;
+    background-color: #063066;
+    color: white;
+    width: 46%;
+    border: #010914 solid 0.4em;
+    border-radius: 0.2em;
+    margin-inline: 0.2em;
+    text-align: center;
+}
+
 .paragrafo-caixa{
     text-align: center;
     margin-bottom: 2em;
@@ -70,7 +93,6 @@ body{
     color: black;
 }
 
-
 /*//////////////////////////////////////////////////////////////////*/
                         /*Style da page de login*/
 /*//////////////////////////////////////////////////////////////////*/
@@ -80,6 +102,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 #detalhe_fundo{
@@ -165,14 +188,49 @@ body{
 }
 #btn-cadastro{
     align-self: center;
-     max-height: 100%;
-      max-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
     border-radius: 1em;
     background-color: #021227;
     color: aliceblue;
     align-self: center;
     width: 80%;
 }
+
+/*//////////////////////////////////////////////////////////////////*/
+                    /*Tela criação projetos*/
+/*//////////////////////////////////////////////////////////////////*/
+
+#form-projeto{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    text-align: center;
+    border: black solid 2px;
+    border-radius: 0.5em;
+    background-color: #063066;
+    align-items: center;
+}
+
+#main-projeto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.campos_cadastro_projeto{
+    padding: 0.5em;
+    margin-block: 0.5em;
+    width: 80%;
+}
+
+.input-cadastro{
+    border: solid black 2px;
+}
+
 /*//////////////////////////////////////////////////////////////////*/
                     /*Tela principal com as tarefas*/
 /*//////////////////////////////////////////////////////////////////*/
@@ -285,15 +343,19 @@ body{
 
 }
 
-.accordion-body{
+.accordion-body {
     opacity: 0;
     height: 0;
+    overflow: hidden; /* Evita conteúdo visível quando fechado */
+    transition: height 0.3s ease, opacity 0.3s ease; /* Adiciona animação suave */
 }
 
-.accordion-body.active{
-    height: 100%;
+.accordion.active .accordion-body {
+    height: auto;
     opacity: 1;
+    overflow: visible;
 }
+
 
 /*//////////////////////////////////////////////////////////////////*/
                     /*Modal para criar Tarefa*/
@@ -336,26 +398,55 @@ body{
 #main-geral{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    padding-inline: 1em;
 }
 
 .caixa-geral{
-    min-height: 15em;
+    max-height: 50%;
     background-color: #052247;
     color: white;
-    width: 30%;
+    width: 32.15%;
     border: #010914 solid 0.4em;
     border-radius: 1em;
     margin-inline: 0.2em;
+    margin-block: 0.2em;
     padding: 1em;
     text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.caixa-geral-criar{
+    max-height: 50%;
+    background-color: #0c4896;
+    color: white;
+    width: 31%;
+    border: #010914 solid 0.4em;
+    border-radius: 1em;
+    margin-inline: 0.2em;
+    margin-block: 0.2em;
+    padding: 1em;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#paragrafo-projeto{
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-all;
 }
 
 .btn-geral{
     text-align: center;
     border-radius: 0.3em;
     width: 30%;
-    align-self: center;
+    align-self: flex-end;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .btn-projeto{
