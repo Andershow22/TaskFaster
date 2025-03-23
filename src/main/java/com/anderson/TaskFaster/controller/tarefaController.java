@@ -15,6 +15,8 @@ import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 @RequestMapping("/tarefa")
@@ -51,5 +53,12 @@ public class tarefaController {
         }
         return "redirect:/projeto/acessar";
     }
+
+    @GetMapping("/deletar")
+    public String deletarTarefa(@RequestParam("id_task") Integer id, HttpSession session, Model m) {
+        service.deletar(id);
+        return "redirect:/projeto/acessar";
+    }
+    
 
 }

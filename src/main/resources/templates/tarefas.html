@@ -10,29 +10,15 @@
     <title>TaskFaster</title>
 </head>
 
-<body style="display: flex;">
+<body style="display: flex; height: 100vh; flex-direction: row;">
     <section id="menu_lateral">
         <div class="d-flex align-items-start my-4">
             <img src="iconTaskFaster-removebg-preview.png" alt="" width="20%" class="img-fluid">
             <h3 style="color: #87DDFD;">TaskFaster</h3>
         </div>
-        <ul class="d-flex flex-column list-unstyled" style="margin-top: 5em; width: 85%;">
-            <li class="li-menu-lateral">
-                <img src="icons8-casa-60.png" class="icon" alt=""><a class="links-menu-lateral"
-                    href="index.html">Inicial</a>
-            </li>
-            <li class="li-menu-lateral">
-                <img src="icons8-tarefa-60.png" class="icon" alt=""><a class="links-menu-lateral"
-                    href="tarefas.html">Tarefas</a>
-            </li>
-            <li class="li-menu-lateral">
-                <img src="icons8-usuário-64.png" class="icon" alt=""><a class="links-menu-lateral"
-                    href="login.html">Conta</a>
-            </li>
-        </ul>
         <div class="d-flex" style="text-align: center;align-items: center;">
             <h4 style="margin-top: 6em; color: #87DDFD; font-size: 2em;">
-                projetos <button class="btn" id="btn-criar-projeto">+</button>
+                <a th:href="@{/projeto/editar}" class="btn btn-primary">Editar</a>
             </h4>
         </div>
 
@@ -62,7 +48,8 @@
                                 <option value="concluido" th:selected="${tarefa.status_tarefa == 'concluido'}">Concluído
                                 </option>
                             </select>
-                            <button type="submit">Alterar</button>
+                            <a th:href="@{/tarefa/excluir(id_task=${tarefa.id})}" class="btn btn-danger">Deletar</a>
+                            <button type="submit" class="btn btn-primary">Alterar</button>
                         </div>
                     </form>
                 </div>
@@ -90,7 +77,8 @@
                                 <option value="concluido" th:selected="${tarefa.status_tarefa == 'concluido'}">Concluído
                                 </option>
                             </select>
-                            <button type="submit">Alterar</button>
+                            <a th:href="@{/tarefa/excluir(id_task=${tarefa.id})}" class="btn btn-danger">Deletar</a>
+                            <button type="submit" class="btn btn-primary">Alterar</button>
                         </div>
                     </form>
                 </div>
@@ -117,7 +105,8 @@
                                 <option value="concluido" th:selected="${tarefa.status_tarefa == 'concluido'}">Concluído
                                 </option>
                             </select>
-                            <button type="submit">Alterar</button>
+                            <a th:href="@{/tarefa/excluir(id_task=${tarefa.id})}" class="btn btn-danger">Deletar</a>
+                            <button type="submit" class="btn btn-primary">Alterar</button>
                         </div>
                     </form>
                 </div>
@@ -143,7 +132,7 @@
                     <option value="baixa">🔵 Baixa</option>
                     <option value="media">🟡 Média</option>
                     <option value="alta">🟠 Alta</option>
-                    <option value="muito_alta">🔴 Muito Alta</option>
+                    <option value="muito alta">🔴 Muito Alta</option>
                 </select>
             </div>
             <div class="inputs-form-criar-tarefa">
